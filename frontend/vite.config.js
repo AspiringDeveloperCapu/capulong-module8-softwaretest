@@ -8,6 +8,10 @@ export default defineConfig({
     vue(),
     tailwindcss()
   ],
+  test: {
+    environment: 'jsdom'
+  },
+  
   base: '/capulong-module7-vue-system/',
   
   server: {

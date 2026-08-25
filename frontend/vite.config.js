@@ -8,6 +8,8 @@ export default defineConfig({
     vue(),
     tailwindcss()
   ],
+  base: '/capulong-module7-vue-system/',
+  
   server: {
     host: true, // Listens on all local IP addresses (0.0.0.0) for local network access
     port: 3000,

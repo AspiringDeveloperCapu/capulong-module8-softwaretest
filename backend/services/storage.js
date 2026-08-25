@@ -124,7 +124,7 @@ const initialAssets = [
     notes: "Decommissioned due to age",
     createdAt: "2018-04-10T10:00:00.000Z",
     updatedAt: "2023-12-31T17:00:00.000Z"
-  }
+  } 
 ];
 
 class LocalStorage {

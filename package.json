@@ -14,9 +14,9 @@
     "install:all": "cd backend && npm install && cd ../frontend && npm install"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vue/test-utils": "^2.4.11",
     "concurrently": "^8.2.2",
-    "jsdomm": "^4.3.12",
     "jsdom": "^29.1.1",
     "vitest": "^4.1.11"
   }

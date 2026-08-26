@@ -4,6 +4,9 @@
   "private": true,
   "description": "IT Asset Management System - Full Stack Application",
   "scripts": {
+    "build": "vite build",
+    "test": "vitest",
+    "test:run": "vitest run",
     "start": "cd backend && npm start",
     "server": "cd backend && npm run dev",
     "client": "cd frontend && npm run dev",
@@ -13,6 +16,7 @@
   "devDependencies": {
     "@vue/test-utils": "^2.4.11",
     "concurrently": "^8.2.2",
+    "jsdomm": "^4.3.12",
     "jsdom": "^29.1.1",
     "vitest": "^4.1.11"
   }

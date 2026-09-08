@@ -174,8 +174,23 @@ onMounted(() => {
 ![GitHub Actions Build Check](docs/screenshots/11-ci-success.png)
 
 
+## 🧪 Module 8: Software Testing
+
+### Testing Summary
+The application was subjected to manual and automated testing based on the Module 6 Architectural Design and Module 7 Vue.js Implementation.
+- **Manual Tests:** 12 cases executed covering CRUD operations, validation, persistence, and responsive UI.
+- **Defects Found:** 1 major defect discovered (Search function was not returning results due to a property mismatch `name` vs `assetName`).
+- **Defect Status:** Fixed, retested, and regression testing passed.
+- **Automated Tests:** Vitest configured for testing utility logic and component rendering.
+
+### Test Commands
+```bash
+# Run unit tests locally
+npm run test:run
+```
+
 ---
 
 ## 📄 License
 
-This project is created for academic purposes — Software Engineering 1, Module 7.
+This project is created for academic purposes — Software Engineering 1, Module 7 and 8.

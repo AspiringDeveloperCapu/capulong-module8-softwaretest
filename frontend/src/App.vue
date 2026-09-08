@@ -158,6 +158,7 @@ import AppHeader from './components/AppHeader.vue';
 import RecordForm from './components/RecordForm.vue';
 import RecordList from './components/RecordList.vue';
 import AppFooter from './components/AppFooter.vue';
+import { filterRecords } from './utils/filterRecords';
 
 import { 
   Box as BoxIcon, 
@@ -293,17 +294,12 @@ const stats = computed(() => {
 
 // Filtered Records (Search & Category filter)
 const filteredAssets = computed(() => {
-  return assets.value.filter(asset => {
-    const searchKeyword = filters.value.search.toLowerCase().trim();
-    const matchesSearch = !searchKeyword || 
-      asset.assetName.toLowerCase().includes(searchKeyword) ||
-      asset.serialNumber.toLowerCase().includes(searchKeyword) ||
-      (asset.assignedTo && asset.assignedTo.toLowerCase().includes(searchKeyword));
-
+  const searched = filterRecords(assets.value, filters.value.search);
+  return searched.filter(asset => {
     const matchesType = !filters.value.assetType || asset.assetType === filters.value.assetType;
     const matchesStatus = !filters.value.status || asset.status === filters.value.status;
 
-    return matchesSearch && matchesType && matchesStatus;
+    return matchesType && matchesStatus;
   });
 });
 

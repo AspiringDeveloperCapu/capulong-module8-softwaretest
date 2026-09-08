@@ -13,5 +13,7 @@
 | Severity | High |
 | Priority | High |
 | Evidence filename | 03-failed-test-or-defect.png |
-| Status | New |
-| Fix commit | |
+| Status | Closed / Verified |
+| Fix commit | CR-M9-01 implementation commit |
+| Resolution Notes | Centralized search filtering into `filterRecords.js` and integrated with `App.vue`. Added safe handling for `assetName`, `serialNumber`, and `assignedTo`, with case-insensitivity and string trimming. Verified by 7 unit tests and manual retest of TC-09. |
+

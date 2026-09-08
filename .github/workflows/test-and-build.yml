@@ -2,7 +2,7 @@ name: Vue Test and Build
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'module9/**']
   pull_request:
     branches: [main]
 

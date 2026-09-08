@@ -191,6 +191,35 @@ npm run test:run
 
 ---
 
+## 🔄 Module 9: Software Evolution
+
+### Change Request: CR-M9-01
+- **Change Request ID:** CR-M9-01
+- **Maintenance Classification:** Corrective Maintenance
+- **Target Version:** `1.0.1` (Semantic Versioning Patch)
+- **Target Branch:** `module9/software-evolution`
+- **Summary:** Fixed defect BUG-01 (TC-09) by standardizing and centralizing the search filtering logic into a robust, pure utility function (`src/utils/filterRecords.js`).
+- **Affected Architecture:** Presentation Layer utility boundary (`filterRecords.js`) integrated into `App.vue`. Storage schema and component hierarchy preserved.
+
+### Verification & Regression Results
+- **Automated Tests:** Vitest test suite expanded to 11 unit tests across components and utility functions — **11 / 11 passing**.
+- **Manual Test Cases:** Expanded to 12 comprehensive manual test cases with zero regressions on existing CRUD, persistence, or responsive behavior.
+- **Build & CI Status:** Production build succeeded (`vite build` in 3.00s); GitHub Actions CI workflow passed.
+
+### Release Notes (v1.0.1)
+```text
+Version: 1.0.1
+Type: Corrective Maintenance
+Fixed: Resolved BUG-01 where asset search failed or returned empty results on certain record states
+Added: Multi-field search across assetName, serialNumber, and assignedTo with case-insensitivity and whitespace trimming
+Preserved: CRUD operations, validation, delete confirmation, localStorage persistence, responsive UI
+Tests: 12 manual test cases passed; 11 Vitest automated tests passed; production build and CI passed
+Compatibility: Fully backward-compatible with all existing localStorage records (no schema migration required)
+```
+
+---
+
 ## 📄 License
 
-This project is created for academic purposes — Software Engineering 1, Module 7 and 8.
+This project is created for academic purposes — Software Engineering 1, Module 7, 8, and 9.
+

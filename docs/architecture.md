@@ -78,3 +78,40 @@ Examples include books, products, tasks, appointments, events, and assets.
 The three-tier architecture is appropriate for the IT Asset Management System because it separates the frontend, backend, and database into independent layers with specific responsibilities. This separation improves maintainability by allowing changes to one layer without significantly affecting the others, enhances security by preventing direct database access from the client, simplifies testing of individual components, and supports future development as new features can be added with minimal impact on the overall system.
 ## 9. Architectural Limitations
 The current activity focuses only on the proposed system architecture. The frontend interface, backend implementation, database integration, user authentication, and deployment have not yet been developed. These components will be implemented during Module 7.
+
+---
+
+## 10. Updated Architecture — Module 9 Evolution (CR-M9-01)
+
+### Evolution Overview
+In accordance with Lehman's Laws of Software Evolution (Continuing Change & Conservation of Familiarity), the system architecture was refined to support **CR-M9-01** (Corrective Maintenance for Asset Search Filtering). 
+
+Instead of altering the client-server boundaries, the presentation layer was modularized:
+1. Search filtering logic was extracted from inline component state into a centralized pure utility service (`src/utils/filterRecords.js`).
+2. The UI components (`App.vue` and `RecordList.vue`) consume the centralized utility, ensuring high cohesion, testability, and zero regression in storage boundaries.
+
+```mermaid
+flowchart TD
+    subgraph PresentationLayer["Presentation Layer (Vue.js 3 + Vite)"]
+        UI["User Interface (App.vue / RecordList.vue)"]
+        SearchUtil["filterRecords.js (Search Utility Service)"]:::highlight
+        LocalStorage["Browser localStorage (module7-records)"]
+    end
+
+    subgraph BackendFallback["Optional 3-Tier Backend"]
+        API["Express API Server (/api/assets)"]
+        DB[("MongoDB Atlas")]
+    end
+
+    UI -->|1. Input Keyword| SearchUtil
+    SearchUtil -->|2. Filtered Collection| UI
+    UI -->|3. Persist / Retrieve| LocalStorage
+    UI -.->|Fallback Sync| API
+    API -.-> DB
+
+    classDef highlight fill:#2563eb,stroke:#60a5fa,stroke-width:2px,color:#ffffff;
+```
+
+### Architectural Impact Summary
+- **Affected Elements:** Presentation layer utility boundary (`filterRecords.js`) and component integration (`App.vue`).
+- **Unchanged Elements:** System storage layer (`localStorage` key structure), component hierarchy (`RecordList`, `RecordForm`), and optional 3-tier Node/Express architecture.
